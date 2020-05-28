@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ruolo-heading" jhiTranslate="antipodiStoreApp.ruolo.home.createOrEditLabel">Create or edit a Ruolo</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.ruolo.created" for="field_created">Created</label>
+                    <div class="input-group">
+                        <input id="field_created" type="text" class="form-control" name="created" ngbDatepicker #createdDp="ngbDatepicker" formControlName="created"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.ruolo.modified" for="field_modified">Modified</label>
+                    <div class="input-group">
+                        <input id="field_modified" type="text" class="form-control" name="modified" ngbDatepicker #modifiedDp="ngbDatepicker" formControlName="modified"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="modifiedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.ruolo.nomeAzione" for="field_nomeAzione">Nome Azione</label>
+                    <input type="text" class="form-control" name="nomeAzione" id="field_nomeAzione"
+                           formControlName="nomeAzione"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.ruolo.azioni" for="field_azioni">Azioni</label>
+                    <select class="form-control" id="field_azioni" name="azioni" formControlName="azioni">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="azioneOption.id === editForm.get('azioni')!.value?.id ? editForm.get('azioni')!.value : azioneOption" *ngFor="let azioneOption of aziones; trackBy: trackById">{{ azioneOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

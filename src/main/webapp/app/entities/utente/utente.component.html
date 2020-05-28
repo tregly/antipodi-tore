@@ -1,0 +1,113 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="antipodiStoreApp.utente.home.title">Utentes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-utente" [routerLink]="['/utente/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="antipodiStoreApp.utente.home.createLabel">
+            Create a new Utente
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'antipodiStoreApp.utente.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="utentes?.length === 0">
+        <span jhiTranslate="antipodiStoreApp.utente.home.notFound">No utentes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="utentes && utentes.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.created">Created</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.modified">Modified</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.username">Username</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.password">Password</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.mail">Mail</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.mobile">Mobile</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.facebook">Facebook</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.google">Google</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.instangram">Instangram</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.provider">Provider</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.attivo">Attivo</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.motivoBolocco">Motivo Bolocco</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.dataBolocco">Data Bolocco</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.registrationDate">Registration Date</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.lastAccess">Last Access</span></th>
+                    <th scope="col" ><span jhiTranslate="antipodiStoreApp.utente.ruolo">Ruolo</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let utente of utentes ;trackBy: trackId">
+                    <td><a [routerLink]="['/utente', utente.id, 'view']">{{ utente.id }}</a></td>
+                    <td>{{ utente.created | date:'mediumDate' }}</td>
+                    <td>{{ utente.modified | date:'mediumDate' }}</td>
+                    <td>{{ utente.username }}</td>
+                    <td>{{ utente.password }}</td>
+                    <td>{{ utente.mail }}</td>
+                    <td>{{ utente.mobile }}</td>
+                    <td>{{ utente.facebook }}</td>
+                    <td>{{ utente.google }}</td>
+                    <td>{{ utente.instangram }}</td>
+                    <td>{{ utente.provider }}</td>
+                    <td>{{ utente.attivo }}</td>
+                    <td>{{ utente.motivoBolocco }}</td>
+                    <td>{{ utente.dataBolocco | date:'mediumDate' }}</td>
+                    <td>{{ utente.registrationDate | date:'mediumDate' }}</td>
+                    <td>{{ utente.lastAccess | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="utente.ruolo">
+                            <a [routerLink]="['/ruolo', utente.ruolo?.id, 'view']" >{{ utente.ruolo?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/utente', utente.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/utente', utente.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(utente)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

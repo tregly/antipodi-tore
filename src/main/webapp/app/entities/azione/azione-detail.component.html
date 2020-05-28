@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="azione">
+            <h2><span jhiTranslate="antipodiStoreApp.azione.detail.title">Azione</span> {{ azione.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="antipodiStoreApp.azione.created">Created</span></dt>
+                <dd>
+                    <span>{{ azione.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.azione.modified">Modified</span></dt>
+                <dd>
+                    <span>{{ azione.modified }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.azione.nomeAzione">Nome Azione</span></dt>
+                <dd>
+                    <span>{{ azione.nomeAzione }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.azione.descrizione">Descrizione</span></dt>
+                <dd>
+                    <span>{{ azione.descrizione }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/azione', azione.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+{
+  "name": "Azione",
+  "fields": [
+    {
+      "fieldName": "created",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modified",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "nomeAzione",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descrizione",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ruolo",
+      "otherEntityRelationshipName": "azioni",
+      "relationshipName": "ruolo"
+    }
+  ],
+  "changelogDate": "20200528030243",
+  "entityTableName": "azione",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

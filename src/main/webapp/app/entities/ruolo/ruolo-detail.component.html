@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ruolo">
+            <h2><span jhiTranslate="antipodiStoreApp.ruolo.detail.title">Ruolo</span> {{ ruolo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="antipodiStoreApp.ruolo.created">Created</span></dt>
+                <dd>
+                    <span>{{ ruolo.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.ruolo.modified">Modified</span></dt>
+                <dd>
+                    <span>{{ ruolo.modified }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.ruolo.nomeAzione">Nome Azione</span></dt>
+                <dd>
+                    <span>{{ ruolo.nomeAzione }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.ruolo.azioni">Azioni</span></dt>
+                <dd>
+                    <div *ngIf="ruolo.azioni">
+                        <a [routerLink]="['/azione', ruolo.azioni?.id, 'view']">{{ ruolo.azioni?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ruolo', ruolo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

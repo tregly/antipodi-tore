@@ -1,0 +1,144 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-utente-heading" jhiTranslate="antipodiStoreApp.utente.home.createOrEditLabel">Create or edit a Utente</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.created" for="field_created">Created</label>
+                    <div class="input-group">
+                        <input id="field_created" type="text" class="form-control" name="created" ngbDatepicker #createdDp="ngbDatepicker" formControlName="created"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.modified" for="field_modified">Modified</label>
+                    <div class="input-group">
+                        <input id="field_modified" type="text" class="form-control" name="modified" ngbDatepicker #modifiedDp="ngbDatepicker" formControlName="modified"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="modifiedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.username" for="field_username">Username</label>
+                    <input type="text" class="form-control" name="username" id="field_username"
+                           formControlName="username"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.password" for="field_password">Password</label>
+                    <input type="text" class="form-control" name="password" id="field_password"
+                           formControlName="password"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.mail" for="field_mail">Mail</label>
+                    <input type="text" class="form-control" name="mail" id="field_mail"
+                           formControlName="mail"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.mobile" for="field_mobile">Mobile</label>
+                    <input type="text" class="form-control" name="mobile" id="field_mobile"
+                           formControlName="mobile"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.facebook" for="field_facebook">Facebook</label>
+                    <input type="text" class="form-control" name="facebook" id="field_facebook"
+                           formControlName="facebook"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.google" for="field_google">Google</label>
+                    <input type="text" class="form-control" name="google" id="field_google"
+                           formControlName="google"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.instangram" for="field_instangram">Instangram</label>
+                    <input type="text" class="form-control" name="instangram" id="field_instangram"
+                           formControlName="instangram"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.provider" for="field_provider">Provider</label>
+                    <input type="text" class="form-control" name="provider" id="field_provider"
+                           formControlName="provider"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.attivo" for="field_attivo">Attivo</label>
+                    <input type="checkbox" class="form-control" name="attivo" id="field_attivo"
+                           formControlName="attivo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.motivoBolocco" for="field_motivoBolocco">Motivo Bolocco</label>
+                    <input type="text" class="form-control" name="motivoBolocco" id="field_motivoBolocco"
+                           formControlName="motivoBolocco"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.dataBolocco" for="field_dataBolocco">Data Bolocco</label>
+                    <div class="input-group">
+                        <input id="field_dataBolocco" type="text" class="form-control" name="dataBolocco" ngbDatepicker #dataBoloccoDp="ngbDatepicker" formControlName="dataBolocco"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataBoloccoDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.registrationDate" for="field_registrationDate">Registration Date</label>
+                    <div class="input-group">
+                        <input id="field_registrationDate" type="text" class="form-control" name="registrationDate" ngbDatepicker #registrationDateDp="ngbDatepicker" formControlName="registrationDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="registrationDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.lastAccess" for="field_lastAccess">Last Access</label>
+                    <div class="input-group">
+                        <input id="field_lastAccess" type="text" class="form-control" name="lastAccess" ngbDatepicker #lastAccessDp="ngbDatepicker" formControlName="lastAccess"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastAccessDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="antipodiStoreApp.utente.ruolo" for="field_ruolo">Ruolo</label>
+                    <select class="form-control" id="field_ruolo" name="ruolo" formControlName="ruolo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ruoloOption.id === editForm.get('ruolo')!.value?.id ? editForm.get('ruolo')!.value : ruoloOption" *ngFor="let ruoloOption of ruolos; trackBy: trackById">{{ ruoloOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{
+  "name": "Ruolo",
+  "fields": [
+    {
+      "fieldName": "created",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modified",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "nomeAzione",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "azione",
+      "otherEntityRelationshipName": "ruolo",
+      "relationshipName": "azioni",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200528030343",
+  "entityTableName": "ruolo",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
