@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="utente">
+            <h2><span jhiTranslate="antipodiStoreApp.utente.detail.title">Utente</span> {{ utente.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="antipodiStoreApp.utente.created">Created</span></dt>
+                <dd>
+                    <span>{{ utente.created }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.modified">Modified</span></dt>
+                <dd>
+                    <span>{{ utente.modified }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.username">Username</span></dt>
+                <dd>
+                    <span>{{ utente.username }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.password">Password</span></dt>
+                <dd>
+                    <span>{{ utente.password }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.mail">Mail</span></dt>
+                <dd>
+                    <span>{{ utente.mail }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.mobile">Mobile</span></dt>
+                <dd>
+                    <span>{{ utente.mobile }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.facebook">Facebook</span></dt>
+                <dd>
+                    <span>{{ utente.facebook }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.google">Google</span></dt>
+                <dd>
+                    <span>{{ utente.google }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.instangram">Instangram</span></dt>
+                <dd>
+                    <span>{{ utente.instangram }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.provider">Provider</span></dt>
+                <dd>
+                    <span>{{ utente.provider }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.attivo">Attivo</span></dt>
+                <dd>
+                    <span>{{ utente.attivo }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.motivoBolocco">Motivo Bolocco</span></dt>
+                <dd>
+                    <span>{{ utente.motivoBolocco }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.dataBolocco">Data Bolocco</span></dt>
+                <dd>
+                    <span>{{ utente.dataBolocco }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.registrationDate">Registration Date</span></dt>
+                <dd>
+                    <span>{{ utente.registrationDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.lastAccess">Last Access</span></dt>
+                <dd>
+                    <span>{{ utente.lastAccess }}</span>
+                </dd>
+                <dt><span jhiTranslate="antipodiStoreApp.utente.ruolo">Ruolo</span></dt>
+                <dd>
+                    <div *ngIf="utente.ruolo">
+                        <a [routerLink]="['/ruolo', utente.ruolo?.id, 'view']">{{ utente.ruolo?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/utente', utente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

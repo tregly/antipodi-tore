@@ -50,6 +50,10 @@ public class CacheConfiguration {
             createCache(cm, it.antipodi.store.domain.User.class.getName());
             createCache(cm, it.antipodi.store.domain.Authority.class.getName());
             createCache(cm, it.antipodi.store.domain.User.class.getName() + ".authorities");
+            createCache(cm, it.antipodi.store.domain.Azione.class.getName());
+            createCache(cm, it.antipodi.store.domain.Azione.class.getName() + ".ruolos");
+            createCache(cm, it.antipodi.store.domain.Ruolo.class.getName());
+            createCache(cm, it.antipodi.store.domain.Utente.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
